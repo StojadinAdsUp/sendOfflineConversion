@@ -1,6 +1,6 @@
 /**
  *  The function get the client id and the details of the transaction.
- *  Then it parse all the data to generate the URL that need to be pinged in order to sent information to Analytics.
+ *  Then it parse all the data to generate the URL that need to be pinged in order to sent information to Analytics
  * @param {string} clientId
  * @param {object} data
  */
