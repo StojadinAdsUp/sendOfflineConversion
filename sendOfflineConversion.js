@@ -1,13 +1,15 @@
 /**
  *  The function get the client id and the details of the transaction.
  *  Then it parse all the data to generate the URL that need to be pinged in order to sent information to Analytics
+ * @param {string} analyticsId
  * @param {string} clientId
  * @param {object} data
  */
-function sendOfflineConversion (clientId, data) {
+function sendOfflineConversion (analyticsId, clientId, data) {
 
     let products = data.products;
 
+    let currencyCode = data.currencyCode;
     let transactionId = data.actionField.id;
     let transactionValue = data.actionField.revenue;
 
@@ -15,9 +17,9 @@ function sendOfflineConversion (clientId, data) {
         ['v', '1'],
         ['_v', 'j91d'],
         ['t', 'event'],
-        ['cu', 'EUR'],
+        ['cu', encodeURI(currencyCode)],
         ['je', '0'],
-        ['tid', 'UA-202531242-1'],
+        ['tid', encodeURI(analyticsId)],
         ['cid', encodeURI(clientId)],
         ['ec', 'Ecommerce'],
         ['ea', 'purchase'],
@@ -30,7 +32,7 @@ function sendOfflineConversion (clientId, data) {
 
     for (let i  = 0; i < products.length; i++) {
 
-        j = i+1;
+        let j = i+1;
         config.push([
             'pr' + j + 'id',
             encodeURI(products[i].id)
@@ -46,6 +48,12 @@ function sendOfflineConversion (clientId, data) {
         ],[
             'pr' + j + 'ca',
             encodeURI(products[i].category)
+        ],[
+            'pr' + j + 'br',
+            encodeURI(products[i].brand)
+        ],[
+            'pr' + j + 'va',
+            encodeURI(products[i].variant)
         ]);
 
     }
