@@ -24,7 +24,7 @@ function sendOfflineConversion (analyticsId, clientId, data) {
         ['ec', 'Ecommerce'],
         ['ea', 'purchase'],
         ['el', encodeURI(transactionId)],
-        ['ev', encodeURI(transactionValue)],
+        ['ev', encodeURI(Math.round(transactionValue))],
         ['ti', encodeURI(transactionId)],
         ['tr', encodeURI(transactionValue)],
         ['pa', 'purchase']
