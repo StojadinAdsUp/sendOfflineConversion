@@ -23,7 +23,9 @@ let data = {
     "currencyCode" : "EUR" || "USD" || "GBP",
     "actionField" : {
         "id" : "<TRANSACTION_ID>",
-        "revenue" : "TRANSACTION_VALUE"
+        "revenue" : "<TRANSACTION_VALUE>",
+        "affiliation" : "<TRANSACTION_AFFILIATION>",
+        "coupon" : "<TRANSACTION_COUPON>"
     },
     "products" : [
         {

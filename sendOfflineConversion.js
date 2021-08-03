@@ -12,6 +12,8 @@ function sendOfflineConversion (analyticsId, clientId, data) {
     let currencyCode = data.currencyCode;
     let transactionId = data.actionField.id;
     let transactionValue = data.actionField.revenue;
+    let coupon = data.actionField.coupon;
+    let affiliation = data.actionField.affiliation;
 
     let config = [
         ['v', '1'],
@@ -27,9 +29,12 @@ function sendOfflineConversion (analyticsId, clientId, data) {
         ['ev', encodeURI(Math.round(transactionValue))],
         ['ti', encodeURI(transactionId)],
         ['tr', encodeURI(transactionValue)],
-        ['pa', 'purchase']
+        ['pa', 'purchase'],
+        ['tcc', encodeURI(coupon)],
+        ['ta', encodeURI(affiliation)]
     ];
 
+    console.log(config);
     for (let i  = 0; i < products.length; i++) {
 
         let j = i+1;
